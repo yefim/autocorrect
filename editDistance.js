@@ -1,12 +1,12 @@
 var editDistance = function(a, b) {
   var i, j, cost;
-  var d = [];
+  var d = [[0]];
 
-  for (i = 0; i <= a.length; i++) {
+  for (i = 1; i <= a.length; i++) {
     d[i] = [i];
   }
 
-  for (i = 0; i <= b.length; i++) {
+  for (i = 1; i <= b.length; i++) {
     d[0][i] = i;
   }
 

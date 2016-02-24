@@ -29,4 +29,10 @@ describe('spellcheck', function() {
       assert.equal(spellcheck('mbryo'), 'embryo');
     });
   });
+
+  describe('two letters to add', function() {
+    it('should return embryonic', function() {
+      assert.equal(spellcheck('mbrynic'), 'embryonic');
+    });
+  });
 });
