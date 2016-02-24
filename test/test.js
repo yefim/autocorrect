@@ -18,5 +18,15 @@ describe('spellcheck', function() {
     it('should return adz', function() {
       assert.equal(spellcheck('arz'), 'adz');
     });
+
+    it('should return at', function() {
+      assert.equal(spellcheck('zt'), 'at');
+    });
+  });
+
+  describe('one letter to add', function() {
+    it('should return embryo', function() {
+      assert.equal(spellcheck('mbryo'), 'embryo');
+    });
   });
 });

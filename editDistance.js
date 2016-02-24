@@ -1,17 +1,28 @@
 var editDistance = function(a, b) {
-  if (a === '' || b === '') {
-    return Math.max(a.length, b.length);
+  var i, j, cost;
+  var d = [];
+
+  for (i = 0; i <= a.length; i++) {
+    d[i] = [i];
   }
 
-  if (a[0] === b[0]) {
-    return editDistance(a.substring(1), b.substring(1));
-  } else {
-    return 1 + Math.min(
-      editDistance(a.substring(1), b.substring(1)),
-      editDistance(a.substring(1), b),
-      editDistance(a, b.substring(1))
-    );
+  for (i = 0; i <= b.length; i++) {
+    d[0][i] = i;
   }
+
+  for (j = 1; j <= b.length; j++) {
+    for (i = 1; i <= a.length; i++) {
+      cost = +(a[i-1] !== b[j-1]);
+
+      d[i][j] = Math.min(
+        d[i-1][j] + 1,
+        d[i][j-1] + 1,
+        d[i-1][j-1] + cost
+      );
+    }
+  }
+
+  return d[a.length][b.length];
 };
 
 module.exports = editDistance;
