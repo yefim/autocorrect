@@ -2,7 +2,7 @@ var assert = require('assert');
 var spellcheck = require('../spellcheck');
 
 describe('spellcheck', function() {
-  this.timeout(5000);
+  this.timeout(6000);
 
   describe('matching words', function() {
     it('should return arm', function() {
@@ -11,6 +11,10 @@ describe('spellcheck', function() {
 
     it('should return bob', function() {
       assert.equal(spellcheck('bob'), 'bob');
+    });
+
+    it('should return zebra', function() {
+      assert.equal(spellcheck('zebra'), 'zebra');
     });
   });
 
@@ -33,6 +37,12 @@ describe('spellcheck', function() {
   describe('two letters to add', function() {
     it('should return embryonic', function() {
       assert.equal(spellcheck('mbrynic'), 'embryonic');
+    });
+  });
+
+  describe('three letters to add', function() {
+    it('should return zymophosphate', function() {
+      assert.equal(spellcheck('zmoposphat'), 'zymophosphate');
     });
   });
 });
