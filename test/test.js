@@ -28,6 +28,12 @@ describe('spellcheck', function() {
     });
   });
 
+  describe('two letters swapped', function() {
+    it('should return aardvark', function() {
+      assert.equal(spellcheck('bordvark'), 'aardvark');
+    });
+  });
+
   describe('one letter to add', function() {
     it('should return embryo', function() {
       assert.equal(spellcheck('mbryo'), 'embryo');

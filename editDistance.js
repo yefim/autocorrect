@@ -1,28 +1,37 @@
-var editDistance = function(a, b) {
+var editDistance = function(s, t) {
+  if (s === t) {
+    return 0;
+  }
+
+  if (s === '' || t === '') {
+    return Math.max(s.length, t.length);
+  }
+
+  var v0 = [];
+  var v1 = [];
   var i, j, cost;
-  var d = [[0]];
 
-  for (i = 1; i <= a.length; i++) {
-    d[i] = [i];
+  for (i = 0; i <= t.length; i++) {
+    v0[i] = i;
   }
 
-  for (i = 1; i <= b.length; i++) {
-    d[0][i] = i;
-  }
-
-  for (j = 1; j <= b.length; j++) {
-    for (i = 1; i <= a.length; i++) {
-      cost = +(a[i-1] !== b[j-1]);
-
-      d[i][j] = Math.min(
-        d[i-1][j] + 1,
-        d[i][j-1] + 1,
-        d[i-1][j-1] + cost
+  for (i = 0; i < s.length; i++) {
+    v1[0] = i + 1;
+    for (j = 0; j < t.length; j++) {
+      cost = +(s[i] !== t[j]);
+      v1[j+1] = Math.min(
+        v1[j] + 1,
+        v0[j+1] + 1,
+        v0[j] + cost
       );
+    }
+
+    for (j = 0; j < v0.length; j++) {
+      v0[j] = v1[j];
     }
   }
 
-  return d[a.length][b.length];
+  return v1[t.length];
 };
 
 module.exports = editDistance;
