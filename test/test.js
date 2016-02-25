@@ -1,5 +1,6 @@
 var assert = require('assert')
 var spellcheck = require('../spellcheck')()
+var framecheck = require('../spellcheck')({dictionary: __dirname + '/dict.txt'})
 var editDistance = require('../editDistance')
 
 describe('editDistance', function() {
@@ -64,6 +65,28 @@ describe('spellcheck', function() {
   describe('three letters to add', function() {
     it('should return zymophosphate', function() {
       assert.equal(spellcheck('zmoposphat'), 'zymophosphate')
+    })
+  })
+})
+
+describe('framecheck', function() {
+  describe('matching words', function() {
+    it('should return fro', function() {
+      assert.equal(framecheck('fro'), 'fro')
+    })
+
+    it('should return from', function() {
+      assert.equal(framecheck('from'), 'from')
+    })
+
+    it('should return frame', function() {
+      assert.equal(framecheck('frame'), 'frame')
+    })
+  })
+
+  describe('one letter swapped', function() {
+    it('should return fro', function() {
+      assert.equal(framecheck('fra'), 'fro')
     })
   })
 })
