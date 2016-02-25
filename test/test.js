@@ -1,21 +1,6 @@
 var assert = require('assert')
 var spellcheck = require('../spellcheck')()
 var framecheck = require('../spellcheck')({dictionary: __dirname + '/dict.txt'})
-var editDistance = require('../editDistance')
-
-describe('editDistance', function() {
-  it('should return 0', function() {
-    assert.equal(editDistance('', ''), 0)
-    assert.equal(editDistance('a', 'a'), 0)
-    assert.equal(editDistance('ab', 'ab'), 0)
-  })
-
-  it('should return 1', function() {
-    assert.equal(editDistance('', 'a'), 1)
-    assert.equal(editDistance('a', ''), 1)
-    assert.equal(editDistance('a', 'b'), 1)
-  })
-})
 
 describe('spellcheck', function() {
   this.timeout(6000)
