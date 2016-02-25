@@ -1,5 +1,5 @@
 var assert = require('assert')
-var spellcheck = require('../spellcheck')
+var spellcheck = require('../spellcheck')()
 var editDistance = require('../editDistance')
 
 describe('editDistance', function() {
