@@ -1,77 +1,77 @@
 var assert = require('assert')
-var spellcheck = require('../spellcheck')()
-var framecheck = require('../spellcheck')({dictionary: __dirname + '/dict.txt'})
+var autocorrect = require('../index')()
+var framecomplete = require('../index')({dictionary: __dirname + '/dict.txt'})
 
-describe('spellcheck', function() {
+describe('autocorrect', function() {
   this.timeout(6000)
 
   describe('matching words', function() {
     it('should return arm', function() {
-      assert.equal(spellcheck('arm'), 'arm')
+      assert.equal(autocorrect('arm'), 'arm')
     })
 
     it('should return bob', function() {
-      assert.equal(spellcheck('bob'), 'bob')
+      assert.equal(autocorrect('bob'), 'bob')
     })
 
     it('should return zebra', function() {
-      assert.equal(spellcheck('zebra'), 'zebra')
+      assert.equal(autocorrect('zebra'), 'zebra')
     })
   })
 
   describe('one letter swapped', function() {
     it('should return adz', function() {
-      assert.equal(spellcheck('arz'), 'adz')
+      assert.equal(autocorrect('arz'), 'adz')
     })
 
     it('should return at', function() {
-      assert.equal(spellcheck('zt'), 'at')
+      assert.equal(autocorrect('zt'), 'at')
     })
   })
 
   describe('two letters swapped', function() {
     it('should return aardvark', function() {
-      assert.equal(spellcheck('bordvark'), 'aardvark')
+      assert.equal(autocorrect('bordvark'), 'aardvark')
     })
   })
 
   describe('one letter to add', function() {
     it('should return embryo', function() {
-      assert.equal(spellcheck('mbryo'), 'embryo')
+      assert.equal(autocorrect('mbryo'), 'embryo')
     })
   })
 
   describe('two letters to add', function() {
     it('should return embryonic', function() {
-      assert.equal(spellcheck('mbrynic'), 'embryonic')
+      assert.equal(autocorrect('mbrynic'), 'embryonic')
     })
   })
 
   describe('three letters to add', function() {
     it('should return zymophosphate', function() {
-      assert.equal(spellcheck('zmoposphat'), 'zymophosphate')
+      assert.equal(autocorrect('zmoposphat'), 'zymophosphate')
     })
   })
 })
 
-describe('framecheck', function() {
+describe('framecomplete', function() {
   describe('matching words', function() {
     it('should return fro', function() {
-      assert.equal(framecheck('fro'), 'fro')
+      assert.equal(framecomplete('fro'), 'fro')
     })
 
     it('should return from', function() {
-      assert.equal(framecheck('from'), 'from')
+      assert.equal(framecomplete('from'), 'from')
     })
 
     it('should return frame', function() {
-      assert.equal(framecheck('frame'), 'frame')
+      assert.equal(framecomplete('frame'), 'frame')
     })
   })
 
   describe('one letter swapped', function() {
     it('should return fro', function() {
-      assert.equal(framecheck('fra'), 'fro')
+      assert.equal(framecomplete('fra'), 'fro')
     })
   })
 })

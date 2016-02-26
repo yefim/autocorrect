@@ -1,17 +1,17 @@
 var fs = require('fs')
 var leven = require('leven')
 
-var spellcheck = function(options) {
+var autocorrect = function(options) {
   options || (options = {})
   var path = options.dictionary || '/usr/share/dict/words'
   var dictionary = fs.readFileSync(path).toString().trim().split('\n')
 
   return function(str) {
-    var distance
-    var bestWord
+    var distance, bestWord, i
     var min = Infinity
+    var len = dictionary.length
 
-    for (var i = 0, l = dictionary.length; i < l; i++) {
+    for (i = 0; i < len; i++) {
       distance = leven(str, dictionary[i])
       if (distance === 0) {
         return dictionary[i]
@@ -25,4 +25,4 @@ var spellcheck = function(options) {
   }
 }
 
-module.exports = spellcheck
+module.exports = autocorrect

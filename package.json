@@ -1,0 +1,27 @@
+{
+  "name": "autocorrect",
+  "version": "1.0.0",
+  "description": "Find the best matching word using the first smallest Levenshtein distance",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "leven": "^2.0.0",
+    "word-list": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yefim/autocorrect.git"
+  },
+  "author": "Yefim Vedernikoff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yefim/autocorrect/issues"
+  },
+  "homepage": "https://github.com/yefim/autocorrect#readme"
+}
