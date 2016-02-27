@@ -1,10 +1,14 @@
 var fs = require('fs')
 var leven = require('leven')
 
+var readDictionary = function(path) {
+  path || (path = '/usr/share/dict/words')
+  return fs.readFileSync(path).toString().trim().split('\n')
+}
+
 var autocorrect = function(options) {
   options || (options = {})
-  var path = options.dictionary || '/usr/share/dict/words'
-  var dictionary = fs.readFileSync(path).toString().trim().split('\n')
+  var dictionary = options.words || readDictionary(options.dictionary)
 
   return function(str) {
     var distance, bestWord, i

@@ -1,6 +1,7 @@
 var assert = require('assert')
 var autocorrect = require('../index')()
 var framecomplete = require('../index')({dictionary: __dirname + '/dict.txt'})
+var wordcomplete = require('../index')({words: ['word', 'words', 'weird']})
 
 describe('autocorrect', function() {
   this.timeout(6000)
@@ -72,6 +73,32 @@ describe('framecomplete', function() {
   describe('one letter swapped', function() {
     it('should return fro', function() {
       assert.equal(framecomplete('fra'), 'fro')
+    })
+  })
+})
+
+describe('wordcomplete', function() {
+  describe('matching words', function() {
+    it('should return word', function() {
+      assert.equal(wordcomplete('word'), 'word')
+    })
+
+    it('should return words', function() {
+      assert.equal(wordcomplete('words'), 'words')
+    })
+
+    it('should return weird', function() {
+      assert.equal(wordcomplete('weird'), 'weird')
+    })
+  })
+
+  describe('one letter swapped', function() {
+    it('should return word', function() {
+      assert.equal(wordcomplete('ward'), 'word')
+    })
+
+    it('should return weird', function() {
+      assert.equal(wordcomplete('waird'), 'weird')
     })
   })
 })
