@@ -9,19 +9,20 @@ var readDictionary = function(path) {
 var autocorrect = function(options) {
   options || (options = {})
   var dictionary = options.words || readDictionary(options.dictionary)
+  var len = dictionary.length
 
   return function(str) {
-    var distance, bestWord, i
-    var min = Infinity
-    var len = dictionary.length
+    var distance, bestWord, i, word, min
 
     for (i = 0; i < len; i++) {
-      distance = leven(str, dictionary[i])
+      word = dictionary[i]
+      distance = leven(str, word)
+
       if (distance === 0) {
-        return dictionary[i]
-      } else if (distance < min) {
+        return word
+      } else if (min === undefined || distance < min) {
         min = distance
-        bestWord = dictionary[i]
+        bestWord = word
       }
     }
 
