@@ -1,4 +1,4 @@
-autocorrect
+autocorrect [![Build Status](https://travis-ci.org/yefim/autocorrect.svg?branch=master)](https://travis-ci.org/yefim/autocorrect)
 ==============
 
 [![NPM](https://nodei.co/npm/autocorrect.png)](https://www.npmjs.com/package/autocorrect)
