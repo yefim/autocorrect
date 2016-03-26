@@ -1,6 +1,8 @@
 autocorrect
 ==============
 
+[![NPM](https://nodei.co/npm/autocorrect.png)](https://www.npmjs.com/package/autocorrect)
+
 Finds the best matching word using the first smallest Levenshtein distance.
 
 ## Usage
