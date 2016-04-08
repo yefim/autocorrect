@@ -1,6 +1,55 @@
 var assert = require('assert')
+var autocorrect = require('../index')()
 var framecomplete = require('../index')({dictionary: __dirname + '/dict.txt'})
 var wordcomplete = require('../index')({words: ['word', 'words', 'weird']})
+
+describe('autocorrect', function() {
+  describe('matching words', function() {
+    it('should return giraffe', function() {
+      assert.equal(autocorrect('giraffe'), 'giraffe')
+    })
+
+    it('should return aa', function() {
+      assert.equal(autocorrect('aa'), 'aa')
+    })
+
+    it('should return zzz', function() {
+      assert.equal(autocorrect('zzz'), 'zzz')
+    })
+  })
+
+  describe('one letter swapped', function() {
+    it('should return zebra', function() {
+      assert.equal(autocorrect('yebra'), 'zebra')
+    })
+
+    it('should return aa', function() {
+      assert.equal(autocorrect('az'), 'aa')
+    })
+  })
+
+  describe('two letters swapped', function() {
+    it('should return zebra', function() {
+      assert.equal(autocorrect('bbrdvark'), 'aardvark')
+    })
+  })
+
+  describe('one letter to add', function() {
+    it('should return aa', function() {
+      assert.equal(autocorrect('a'), 'aa')
+    })
+
+    it('should return zebra', function() {
+      assert.equal(autocorrect('zebr'), 'zebra')
+    })
+  })
+
+  describe('one letter to remove', function() {
+    it('should return zzz', function() {
+      assert.equal(autocorrect('yzzz'), 'zzz')
+    })
+  })
+})
 
 describe('framecomplete', function() {
   describe('matching words', function() {

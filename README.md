@@ -17,8 +17,8 @@ autocorrect('mbryo') // embryo
 ### Custom dictionary path
 
 ````javascript
-var wordListPath = require('word-list')
-var autocorrect = require('autocorrect')({dictionary: wordListPath})
+var path = '/usr/share/dict/words'
+var autocorrect = require('autocorrect')({dictionary: path})
 autocorrect('mbryo') // embryo
 ````
 
@@ -32,4 +32,4 @@ autocorrect('wared') // wired
 ## Options
 
 * `words` - a list of words to use for matching
-* `dictionary` - path to dictionary file (defaults to `/usr/share/dict/words`)
+* `dictionary` - path to dictionary file

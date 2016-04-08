@@ -1,8 +1,9 @@
 var fs = require('fs')
 var leven = require('leven')
+var wordListPath = require('word-list')
 
 var readDictionary = function(path) {
-  path || (path = '/usr/share/dict/words')
+  path || (path = wordListPath)
   return fs.readFileSync(path).toString().trim().split('\n')
 }
 
