@@ -7,7 +7,7 @@ Finds the best matching word using the first smallest Levenshtein distance.
 
 ## Usage
 
-### Default options
+### Default options (uses [word-list](https://github.com/sindresorhus/word-list) as dict)
 
 ````javascript
 var autocorrect = require('autocorrect')()
@@ -33,3 +33,7 @@ autocorrect('wared') // wired
 
 * `words` - a list of words to use for matching
 * `dictionary` - path to dictionary file
+
+## Contributors
+
+* [Yefim Vedernikoff](https://twitter.com/yefim)
